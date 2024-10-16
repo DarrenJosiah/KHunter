@@ -1,5 +1,13 @@
 <template lang="pug">
   .idol-view-container
+    
+    //- search
+    .idol-card.glass
+      .input-wrapper
+        input(type="text" v-model="searchTerm" @keyup.enter="handleSearch" placeholder="Search idol")
+        .search-input.pi.pi-search(@click="handleSearch")
+    
+    //- idol card
     .idol-card.glass(v-for="idol in filteredIdol" :key="idol.id")
       .idol-card__img-container
         img.idol-card__img.glitch-img(v-if="idol && idol.thumb_url" :src="idol.thumb_url" alt="Idol Image" draggable="false")
@@ -14,9 +22,6 @@
     .idol-card.glass(v-for="group in filteredGroup" :key="group.id")
       img.idol-card__img.glitch-img(v-if="group && group.thumb_url" :src="group.thumb_url" alt="GRoup Image" draggable="false")
       //- {{ idol.real_name_original }}
-    .idol-card.glass
-      input(type="text" v-model="searchTerm" @keyup.enter="handleSearch" placeholder="Search idol")
-      <button @click="handleSearch">Go</button>
 </template>
 
 <script lang="ts">
@@ -57,7 +62,7 @@ export default {
     filteredGroup(): Group[] | void {
       // if (!this.relatedGroupIds.groups) return [];
       // // console.log(this.relatedGroupIds);
-      
+
       // // TODO loop group array, into group id
       // return this.relatedGroupIds.groups.filter((group) => group.id === '7WJQQrEe45xdB9XpC5FY');
     },
@@ -68,7 +73,6 @@ export default {
     },
     handleSearch() {
       // Handle both button click and Enter key
-      console.log(this.searchTerm);
       this.startBaffle();
       this.startGlitch();
     },
@@ -118,6 +122,10 @@ export default {
   background-color: aqua;
   padding: 12px;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
   &.glass{
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(10px);
@@ -139,6 +147,10 @@ export default {
       position: relative;
       height: 300px;
       aspect-ratio: 1/1;
+
+      @media (max-width: 768px) {
+        height: 100%;
+      }
     }
   }
 
@@ -149,38 +161,44 @@ export default {
     }
   }
 
-  /* From Uiverse.io by Praashoo7 */ 
-  input {
-    border: none;
-    outline: none;
-    border-radius: 15px;
-    padding: 1em;
-    background-color: #ccc;
-    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
-    transition: 300ms ease-in-out;
-
-    &:focus {
-      background-color: white;
-      transform: scale(1.05);
-      box-shadow: 13px 13px 100px #969696,
-                -13px -13px 100px #ffffff;
+  .input-wrapper {
+    position: relative;
+    
+    input {
+      /* From Uiverse.io by Praashoo7 */ 
+      font-family: "Do Hyeon", sans-serif;
+      border: none;
+      outline: none;
+      border-radius: 15px;
+      padding: 1em;
+      letter-spacing: 1.8px;
+      color: var(--color-text);
+      background-color: black;
+      transition: 300ms ease-in-out;
+    }
+    .search-input {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
     }
   }
 }
 
 /* glitch elem must have absolute position */
 .glitch-img {
-        position: absolute; 
-        width : 100%;
-        height : 100%; 
-        top: 0 ; 
-        left : 0; 
-        opacity : 1;
-        
-        background-position:center;  
-        -moz-background-size:cover;
-        -o-background-size:cover;
-        -webkit-background-size:cover;
-        background-size:cover;
-      } 
+    position: absolute; 
+    width : 100%;
+    height : 100%; 
+    top: 0 ; 
+    left : 0; 
+    opacity : 1;
+    
+    background-position:center;  
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    -webkit-background-size:cover;
+    background-size:cover;
+  } 
 </style>

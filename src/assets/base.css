@@ -1,10 +1,12 @@
 /* color palette from <https://github.com/vuejs/theme> */
+@import "primeicons/primeicons.css";
+
 :root {
-  --vt-c-primary: #d429ff;
+  --vt-c-primary: #ff39bd;
   --vt-c-primary-soft: #f8f8f8;
   --vt-c-primary-mute: #f2f2f2;
 
-  --vt-c-black: #181818;
+  --vt-c-black: black;
   --vt-c-black-soft: #222222;
   --vt-c-black-mute: #282828;
 
@@ -22,7 +24,7 @@
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-black-soft);
+  --color-background: var(--vt-c-black);
   --color-background-soft: var(--vt-c-black-soft-soft);
   --color-background-mute: var(--vt-c-black-soft-mute);
 
@@ -81,8 +83,15 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
+  font-size: 16px;
+  letter-spacing: 1.8px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* variables
+$bpMobile: 320px;
+$bpTablet: 768px;
+$bpDesktop: 1024px;
+$bpLgDesktop: 1280px; */

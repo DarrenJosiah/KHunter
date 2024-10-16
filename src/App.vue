@@ -1,9 +1,9 @@
 <template>
+  <!-- <Vue3Lottie :animationData="waveJSON" /> -->
   <header>
     <div class="wrapper">
       <HelloWorld/>
 
-      <Vue3Lottie :animationData="waveJSON" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -26,7 +26,7 @@ import waveJSON from "./assets/wave.json"
 
 
 
-<style scoped>
+<style scoped lang="scss">
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -41,7 +41,7 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 
 nav a.router-link-exact-active {
